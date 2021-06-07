@@ -1,0 +1,39 @@
+<%= form_with(model: item) do |form| %>
+  <% if item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+        <% item.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field mb-3">
+    <%= form.text_field :item_name, class:"form-control", placeholder:"Item Name" %>
+  </div>
+
+  <div class="field mb-3">
+    <%= form.text_field :item_price, class:"form-control", placeholder:"Price" %>
+  </div>
+
+  <div class="field mb-3">
+    <%= form.text_field :item_description, class:"form-control", placeholder:"Item Description" %>
+  </div>
+
+  <div class="field mb-3">
+    <%= form.text_field :item_stock, class:"form-control", placeholder:"Stock" %>
+  </div>
+
+  <div class="field mb-3">
+    <%# devise 'current_user helper can be used to preset owner id here %>
+    <%= form.number_field :user_id, id: :item_user_id, class:"form-control", value: current_user.id, type: :hidden %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class:"btn btn-secondary"%>
+  </div>
+  <br/>
+<% end %>

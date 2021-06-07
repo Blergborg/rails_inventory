@@ -1,0 +1,17 @@
+<div class="container-fluid text-sm p-5 bg-light">
+  <h1 class="display-5"><%= @item.item_name %></h1>
+  <p class="lead">
+    <%= @item.item_description %>
+  </p>
+  <hr class="my-4">
+  <p>
+    <%= @item.item_price %>
+  </p>
+  <p>
+    In Stock: <%= @item.item_stock %>
+  </p>
+
+  <%= link_to 'Edit', edit_item_path(@item), class:'btn btn-secondary' %> 
+  <%= link_to 'Back', items_path, class:'btn btn-dark' %>
+  <%= link_to 'Delete', @item, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+</div>

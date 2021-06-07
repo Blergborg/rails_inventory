@@ -1,0 +1,39 @@
+<% if user_signed_in? %>
+  <h1><%= current_user.email %>'s Stuff</h1>
+  <table class="table table-striped table-bordered table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>Item name</th>
+        <th>Item price</th>
+        <th>Item description</th>
+        <th>Stock</th>
+        <th>User Id</th>
+        <th colspan="1"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @items.each do |item| %>
+        <%# only show item to its creator %>
+        <% if item.user == current_user %>
+          <tr>
+            <td>
+              <%= link_to item.item_name, item %>
+             </td>
+            <td><%= item.item_price %></td>
+            <td><%= item.item_description %></td>
+            <td><%= item.item_stock %></td>
+            <td><%= item.user_id %></td>
+            <td><%= link_to 'Delete', item, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger btn-sm" %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+  <br/>
+
+  <%= link_to 'New Item', new_item_path, class:'btn btn-secondary' %>
+<% else %>
+  <h1>What're ya buyin'? What're ya sellin'?</h1>
+  <%= image_tag("boxes.jpg") %>
+<% end %>
