@@ -34,6 +34,8 @@
 
   <%= link_to 'New Item', new_item_path, class:'btn btn-secondary' %>
 <% else %>
-  <h1>What're ya buyin'? What're ya sellin'?</h1>
-  <%= image_tag("boxes.jpg") %>
+  <div class="container text-center">
+    <h1>What're ya buyin'? What're ya sellin'?</h1>
+    <%= image_tag("boxes.jpg") %>
+  </div>
 <% end %>
